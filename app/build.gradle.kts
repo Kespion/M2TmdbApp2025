@@ -58,6 +58,10 @@ dependencies {
     // Picasso
     implementation(libs.picasso)
 
+    // WOrk Manager
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.androidx.legacy.support.v4)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
