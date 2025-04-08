@@ -17,6 +17,7 @@ class ScoreGaugeView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
+
     private val LOGTAG = ScoreGaugeView::class.simpleName
 
     // hold XML custom attributes
@@ -42,7 +43,7 @@ class ScoreGaugeView @JvmOverloads constructor(
     init {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ScoreGaugeView)
         scoreMax = typedArray.getFloat(R.styleable.ScoreGaugeView_scoreMax, 100f)
-        scoreValue = typedArray.getFloat(R.styleable.ScoreGaugeView_scoreValue, 50f)
+        scoreValue = typedArray.getFloat(R.styleable.ScoreGaugeView_scoreValue, 75f)
         scoreLabel = typedArray.getString(R.styleable.ScoreGaugeView_scoreLabel)
         if (scoreLabel == null) scoreLabel = if (isInEditMode) context.getString(R.string.no_label) else ""
         scoreColor = typedArray.getColor(R.styleable.ScoreGaugeView_scoreColor, Color.GREEN)
@@ -79,6 +80,7 @@ class ScoreGaugeView @JvmOverloads constructor(
         }
     }
 
+    // useless for our need
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         Log.d(LOGTAG,"onSizeChanged($w,$h,$oldw,$oldh)")
@@ -88,6 +90,7 @@ class ScoreGaugeView @JvmOverloads constructor(
         super.onDraw(canvas)
 
         val percent = if (scoreMax > 0) scoreValue / scoreMax else 0f
+
         // Draw gauge main rectangle
         paint.style= Paint.Style.FILL
         paint.color=scoreColor
@@ -125,6 +128,9 @@ class ScoreGaugeView @JvmOverloads constructor(
             (paddingTop + height - paddingBottom + textHeight) * 0.5f,
             paint)
 
+        // debug lines to show canvas footprint
+        //canvas.drawLine(0f,height * 0.5f, width.toFloat(), height * 0.5f, rectPaint)
+        //canvas.drawLine(width * 0.5f, 0f, width*0.5f, height.toFloat(), rectPaint)
     }
 
     fun updateScore(label:String, color: Int, value:Float, max:Float) {

@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         // Init recycler view
         binding.popularPersonRv.setHasFixedSize(true)
         binding.popularPersonRv.layoutManager = LinearLayoutManager(this)
-        personPopularAdapter = PersonPopularAdapter(persons)
+        personPopularAdapter = PersonPopularAdapter(persons, this)
         binding.popularPersonRv.adapter = personPopularAdapter
         binding.popularPersonRv.addOnScrollListener(object : OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
