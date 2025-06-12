@@ -35,6 +35,24 @@ class PersonPopularAdapter(private val persons: ArrayList<Person>, private val a
 
     override fun onBindViewHolder(holder: PersonPopularViewHolder, position: Int) {
         val curItem = persons[position]
+
+        val genderRes = when (curItem.gender) {
+            1    -> R.drawable.ic_gender_female
+            2    -> R.drawable.ic_gender_male
+            3    -> R.drawable.ic_gender_trans
+            else -> null
+        }
+
+        if (genderRes != null) {
+            holder.binding.ivGender.apply {
+                setImageResource(genderRes)
+                visibility = View.VISIBLE
+                contentDescription = if (curItem.gender == 1) "Femme" else if (curItem.gender == 2) "Homme" else "Transgenre"
+            }
+        } else {
+            holder.binding.ivGender.visibility = View.INVISIBLE
+        }
+
         holder.binding.nameTv.text = curItem.name
         holder.binding.knownForTv.text = curItem.knownForDepartment
         holder.binding.popularityTv.text = curItem.popularity.toString()

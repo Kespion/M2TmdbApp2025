@@ -2,5 +2,6 @@
     <declare-styleable name="SensorDemoView">
         <attr name="dialCaption" format="string" />
         <attr name="dialColor" format="color" />
+        <attr name="dialMaxrange" format="float" />
     </declare-styleable>
 </resources>

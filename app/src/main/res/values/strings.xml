@@ -24,6 +24,7 @@
     <string name="range_caption">Max range:</string>
     <string name="sensor_name">sensor name</string>
     <string name="sensor_unknown">unknown sensor</string>
+    <string name="gender_icon">gender</string>
 
     <string-array name="dial_needle_colors">
         <item>-16776961</item>
