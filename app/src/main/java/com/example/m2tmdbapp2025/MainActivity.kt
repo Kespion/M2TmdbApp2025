@@ -42,7 +42,7 @@ import java.util.concurrent.TimeUnit
 
 const val NOTIFICATION_CHANNEL_ID = "popular_person_notification_channel_id"
 const val TMDB_WORK_REQUEST_TAG = "tmdb-popular-person"
-const val PERSON_ID_EXTRA_KEY = "person_id_ek"
+const val PERSON_ID_EXTRA_KEY = "person_id"
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, OnPersonItemClickListener {
 

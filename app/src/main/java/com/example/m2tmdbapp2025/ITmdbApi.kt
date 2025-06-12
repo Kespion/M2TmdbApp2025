@@ -1,8 +1,10 @@
 package com.example.m2tmdbapp2025
 
+import com.example.m2tmdbapp2025.model.PersonDetail
 import com.example.m2tmdbapp2025.model.PersonPopularResponse
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 // TMDB API call example:
@@ -17,4 +19,11 @@ interface ITmdbApi {
         @Query("api_key") apiKey: String,
         @Query("page") pageNb: Int
     ) : Call<PersonPopularResponse>
+
+    @GET("person/{id}")
+    suspend fun getPersonDetail(
+        @Path("id") personId: Int,
+        @Query("api_key") apiKey: String = TMDB_API_KEY,
+        @Query("language") lang: String = "en-US"
+    ): PersonDetail
 }
