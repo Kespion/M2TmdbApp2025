@@ -67,6 +67,7 @@ class SensorDemoActivity : AppCompatActivity() , OnSensorItemClickListener, Sens
                 .append(if (n - i == 1) '.' else ", ")
         }
         binding.arrayValuesTv.text=values.toString()
+        binding.sensorDemoView.setCaption(currentSensor!!.name)
         binding.sensorDemoView.setSensorEvent(event)
     }
 
